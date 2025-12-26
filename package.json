@@ -1,0 +1,17 @@
+{
+  "name": "discord-link-bot",
+  "version": "1.0.0",
+  "description": "Um bot de Discord que envia links aleatórios.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "dotenv": "^16.4.5"
+  }
+}
