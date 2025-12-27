@@ -42,19 +42,19 @@ if (commandName === 'start') {
 
   await interaction.editReply('Iniciando o envio de links!')
 }
-    } else if (commandName === 'stop') {
-        // Verifica se o intervalo não está rodando
-        if (!linkInterval) {
-            await interaction.reply({ content: 'O bot não está enviando links no momento.', ephemeral: true });
-            return;
-        }
+    
+if (commandName === 'stop') {
+  if (!linkInterval) {
+    await interaction.reply({ content: 'Não tá rodando.', flags: 64 })
+    return
+  }
 
-        // Para o intervalo
-        clearInterval(linkInterval);
-        linkInterval = null; // Limpa a variável
+  clearInterval(linkInterval)
+  linkInterval = null
 
-        await interaction.reply({ content: 'Envio de links interrompido.', ephemeral: true });
-    }
+  await interaction.reply({ content: 'Envio interrompido.', flags: 64 })
+}
+
 });
 
 client.login(process.env.DISCORD_TOKEN);
