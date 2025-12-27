@@ -1,5 +1,7 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
+require("./deploy-commands")
+require("./bot")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
