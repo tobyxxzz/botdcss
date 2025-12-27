@@ -26,22 +26,22 @@ client.on('interactionCreate', async interaction => {
 
     const { commandName } = interaction;
 
-    if (commandName === 'start') {
-        // Verifica se o intervalo já está rodando
-        if (linkInterval) {
-            await interaction.reply({ content: 'O bot já está enviando links.', ephemeral: true });
-            return;
-        }
+if (commandName === 'start') {
+  if (linkInterval) {
+    await interaction.reply({ content: 'Já tá rodando.', flags: 64 })
+    return
+  }
 
-        await interaction.reply({ content: 'Iniciando o envio de links!', ephemeral: true });
+  await interaction.deferReply({ flags: 64 })
 
-        // Inicia o intervalo para enviar a mensagem a cada 1 segundo
-        linkInterval = setInterval(() => {
-            const randomString = generateRandomString(24);
-            const link = `https://discord.com/billing/promotions/${randomString}`;
-            interaction.channel.send(link);
-        }, 1000);
+  linkInterval = setInterval(() => {
+    const randomString = generateRandomString(24)
+    const link = `https://discord.com/billing/promotions/${randomString}`
+    interaction.channel.send(link)
+  }, 3000) // recomendo 3s
 
+  await interaction.editReply('Iniciando o envio de links!')
+}
     } else if (commandName === 'stop') {
         // Verifica se o intervalo não está rodando
         if (!linkInterval) {
